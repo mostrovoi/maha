@@ -76,4 +76,33 @@ internal class CheckoutUseCaseTest {
         val totalPrice = checkoutUseCase.execute(listIds)
         totalPrice `should be equal to` 200
     }
+
+    @Test
+    fun `should return combined price (discounted + regular price) for a series of same watches`() {
+        val watchRepository = DummyWatchRepository()
+        val firstWatch = WatchStub.create(id = 1, price = 20, discount = Discount(3, 200))
+        watchRepository.addWatch(firstWatch)
+
+        val checkoutUseCase = CheckoutUseCase(watchRepository)
+
+        val listIds = listOf(1, 1, 1, 1)
+        val totalPrice = checkoutUseCase.execute(listIds)
+        totalPrice `should be equal to` 220
+    }
+
+    @Test
+    fun `should return combined price (discounted + regular price) for a series of watches`() {
+        val watchRepository = DummyWatchRepository()
+        val firstWatch = WatchStub.create(id = 1, price = 20, discount = Discount(3, 200))
+        val secondWatch = WatchStub.create(id = 2, price = 20, discount = Discount(2, 100))
+
+        watchRepository.addWatch(firstWatch)
+        watchRepository.addWatch(secondWatch)
+
+        val checkoutUseCase = CheckoutUseCase(watchRepository)
+
+        val listIds = listOf(1, 1, 1, 1, 2, 2, 2)
+        val totalPrice = checkoutUseCase.execute(listIds)
+        totalPrice `should be equal to` 340
+    }
 }
