@@ -31,11 +31,6 @@ dependencies {
     implementation("org.junit.jupiter:junit-jupiter:5.4.2")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlin_serialization")
     implementation("io.ktor:ktor-serialization:$ktor_version")
-    implementation ("org.jetbrains.exposed:exposed-core:$exposed_version")
-    implementation ("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
-    implementation ("com.h2database:h2:$h2_version")
-    implementation ("com.zaxxer:HikariCP:$hikari_version")
-
 
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
     testImplementation("org.amshove.kluent:kluent:$kluent_version")

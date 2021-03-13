@@ -1,6 +1,5 @@
 package com.maha
 
-import com.maha.infrastructure.DatabaseFactory
 import com.maha.infrastructure.registerCheckoutRoutes
 import io.ktor.application.*
 import io.ktor.features.*
@@ -14,5 +13,5 @@ fun Application.module(testing: Boolean = false) {
     }
     registerCheckoutRoutes()
 
-    DatabaseFactory.init()
+
 }
