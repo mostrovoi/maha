@@ -1,8 +1,7 @@
 package application
 
-import com.maha.application.CheckoutUseCase
+import com.maha.application.CheckoutUseCaseImpl
 import com.maha.domain.Discount
-import com.maha.domain.Watch
 import com.maha.domain.WatchNotFoundException
 import feature.WatchStub
 import org.amshove.kluent.`should be equal to`
@@ -15,7 +14,7 @@ internal class CheckoutUseCaseTest {
     @Test
     fun `should return 0 for empty list`() {
         val watchRepository = DummyWatchRepository()
-        val checkoutUseCase = CheckoutUseCase(watchRepository)
+        val checkoutUseCase = CheckoutUseCaseImpl(watchRepository)
         val listIds = emptyList<Int>()
         val totalPrice = checkoutUseCase.execute(listIds)
         totalPrice `should be equal to` 0
@@ -26,7 +25,7 @@ internal class CheckoutUseCaseTest {
         val watchRepository = DummyWatchRepository()
         val watch = WatchStub.create(id = 1, price = 20)
         watchRepository.addWatch(watch)
-        val checkoutUseCase = CheckoutUseCase(watchRepository)
+        val checkoutUseCase = CheckoutUseCaseImpl(watchRepository)
 
         val listIds = listOf(1)
         val totalPrice = checkoutUseCase.execute(listIds)
@@ -41,7 +40,7 @@ internal class CheckoutUseCaseTest {
         watchRepository.addWatch(firstWatch)
         watchRepository.addWatch(secondWatch)
 
-        val checkoutUseCase = CheckoutUseCase(watchRepository)
+        val checkoutUseCase = CheckoutUseCaseImpl(watchRepository)
 
         val listIds = listOf(1, 2)
         val totalPrice = checkoutUseCase.execute(listIds)
@@ -56,7 +55,7 @@ internal class CheckoutUseCaseTest {
         watchRepository.addWatch(firstWatch)
         watchRepository.addWatch(secondWatch)
 
-        val checkoutUseCase = CheckoutUseCase(watchRepository)
+        val checkoutUseCase = CheckoutUseCaseImpl(watchRepository)
 
         val listIds = listOf(1, 11)
         invoking {
@@ -70,7 +69,7 @@ internal class CheckoutUseCaseTest {
         val firstWatch = WatchStub.create(id = 1, price = 20, discount = Discount(3, 200))
         watchRepository.addWatch(firstWatch)
 
-        val checkoutUseCase = CheckoutUseCase(watchRepository)
+        val checkoutUseCase = CheckoutUseCaseImpl(watchRepository)
 
         val listIds = listOf(1, 1, 1)
         val totalPrice = checkoutUseCase.execute(listIds)
@@ -83,7 +82,7 @@ internal class CheckoutUseCaseTest {
         val firstWatch = WatchStub.create(id = 1, price = 20, discount = Discount(3, 200))
         watchRepository.addWatch(firstWatch)
 
-        val checkoutUseCase = CheckoutUseCase(watchRepository)
+        val checkoutUseCase = CheckoutUseCaseImpl(watchRepository)
 
         val listIds = listOf(1, 1, 1, 1)
         val totalPrice = checkoutUseCase.execute(listIds)
@@ -99,7 +98,7 @@ internal class CheckoutUseCaseTest {
         watchRepository.addWatch(firstWatch)
         watchRepository.addWatch(secondWatch)
 
-        val checkoutUseCase = CheckoutUseCase(watchRepository)
+        val checkoutUseCase = CheckoutUseCaseImpl(watchRepository)
 
         val listIds = listOf(1, 1, 1, 1, 2, 2, 2)
         val totalPrice = checkoutUseCase.execute(listIds)

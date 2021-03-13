@@ -3,9 +3,7 @@ val ktor_version: String by project
 val kotlin_version: String by project
 val kluent_version: String by project
 val kotlin_serialization: String by project
-val exposed_version: String by project
-val h2_version: String by project
-val hikari_version: String by project
+val kodein_version: String by project
 
 plugins {
     application
@@ -22,6 +20,7 @@ application {
 repositories {
     mavenLocal()
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
@@ -31,7 +30,9 @@ dependencies {
     implementation("org.junit.jupiter:junit-jupiter:5.4.2")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlin_serialization")
     implementation("io.ktor:ktor-serialization:$ktor_version")
-
+    implementation("org.kodein.di:kodein-di-generic-jvm:$kodein_version")
+    implementation("org.kodein.di:kodein-di-framework-ktor-server-jvm:$kodein_version")
+    implementation ("io.ktor:ktor-gson:$ktor_version")
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
     testImplementation("org.amshove.kluent:kluent:$kluent_version")
 }
@@ -41,3 +42,12 @@ kotlin.sourceSets["test"].kotlin.srcDirs("test")
 
 sourceSets["main"].resources.srcDirs("resources")
 sourceSets["test"].resources.srcDirs("testresources")
+
+tasks {
+    val java = "11"
+
+    compileKotlin {
+        kotlinOptions { jvmTarget = java }
+        sourceCompatibility = java
+    }
+}
