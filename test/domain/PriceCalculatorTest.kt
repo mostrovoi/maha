@@ -9,7 +9,19 @@ internal class PriceCalculatorTest {
 
     @Test
     fun `should return the price if the discount criteria is not met`() {
+        val totalPrice = PriceCalculator.calculate(200, Discount(3, 100), 2)
+        totalPrice `should be equal to` 400
+    }
+
+    @Test
+    fun `should return the discounted price if discount criteria is met`() {
         val totalPrice = PriceCalculator.calculate(200, Discount(3, 100), 3)
-        totalPrice `should be equal to` 600
+        totalPrice `should be equal to` 100
+    }
+
+    @Test
+    fun `should apply discounted price multiple times if discount criteria is met`() {
+        val totalPrice = PriceCalculator.calculate(200, Discount(3, 100), 7)
+        totalPrice `should be equal to` 400
     }
 }
