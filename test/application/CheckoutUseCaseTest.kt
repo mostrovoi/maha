@@ -28,4 +28,20 @@ internal class CheckoutUseCaseTest {
         totalPrice `should be equal to` 20
     }
 
+    @Test
+    fun `should return the total price for a list containing multiple ids`() {
+        val watchRepository = DummyWatchRepository()
+        val firstWatch = Watch(id = 1, price = 20)
+        val secondWatch = Watch(id = 2, price = 30)
+        watchRepository.addWatch(firstWatch)
+        watchRepository.addWatch(secondWatch)
+
+        val checkoutUseCase = CheckoutUseCase(watchRepository)
+
+        val listIds = listOf(1, 2)
+        val totalPrice = checkoutUseCase.execute(listIds)
+        totalPrice `should be equal to` 50
+    }
+
+
 }
