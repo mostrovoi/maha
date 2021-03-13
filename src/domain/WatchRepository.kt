@@ -1,4 +1,4 @@
-package com.maha.application
+package com.maha.domain
 
 import com.maha.domain.Watch
 

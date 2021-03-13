@@ -1,6 +1,6 @@
 package application
 
-import com.maha.application.WatchRepository
+import com.maha.domain.WatchRepository
 import com.maha.domain.Watch
 import com.maha.domain.WatchNotFoundException
 
