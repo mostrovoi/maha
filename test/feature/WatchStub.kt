@@ -9,10 +9,7 @@ class WatchStub() {
             id: Int = Math.random().toInt(),
             price: Int = Math.random().toInt(),
             name: String = "dummy sample",
-            discount: Discount = Discount(
-                total = Math.random().toInt(),
-                discountPrice = Math.random().toInt()
-            )
+            discount: Discount? = null
         ): Watch {
             return Watch(
                 id = id,

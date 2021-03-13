@@ -8,6 +8,12 @@ import org.junit.Test
 internal class PriceCalculatorTest {
 
     @Test
+    fun `should return the price if there is no discount`() {
+        val totalPrice = PriceCalculator.calculate(200,2)
+        totalPrice `should be equal to` 400
+    }
+
+    @Test
     fun `should return the price if the discount criteria is not met`() {
         val totalPrice = PriceCalculator.calculate(200, Discount(3, 100), 2)
         totalPrice `should be equal to` 400
