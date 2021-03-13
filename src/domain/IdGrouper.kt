@@ -2,8 +2,8 @@ package com.maha.domain
 
 class IdGrouper {
     companion object {
-        fun groupById(listIds: List<Int>): Map<Int, Int> {
-            return emptyMap()
+        fun groupById(watchIds: List<Int>): Map<Int, Int> {
+            return watchIds.groupingBy { it }.eachCount()
         }
     }
 }
