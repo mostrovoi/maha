@@ -27,16 +27,28 @@ fun Application.module(testing: Boolean = false) {
     }
     install(DefaultHeaders)
     install(StatusPages) {
-        exception<NumberFormatException> { _ ->
+        exception<NumberFormatException> { cause ->
+            log.error("Number format exception", cause)
             call.respond(HttpStatusCode.BadRequest)
         }
-        exception<com.google.gson.JsonParseException> { _ ->
+        exception<com.google.gson.JsonParseException> { cause ->
+            log.error("JsonParseException", cause)
             call.respond(HttpStatusCode.BadRequest)
         }
-        exception<BadRequestException> {
+        exception<BadRequestException> { cause ->
+            log.error("BadRequestException", cause)
             call.respond(HttpStatusCode.BadRequest)
         }
-        exception<WatchNotFoundException> {
+        exception<WatchNotFoundException> { cause ->
+            log.error("Watch not found exception")
+            call.respond(HttpStatusCode.BadRequest)
+        }
+        exception<io.ktor.http.BadContentTypeFormatException> { cause ->
+            log.error("Bad content type", cause)
+            call.respond(HttpStatusCode.BadRequest)
+        }
+        exception<java.lang.ClassCastException> { cause ->
+            log.error("Bad request sent.", cause)
             call.respond(HttpStatusCode.BadRequest)
         }
     }

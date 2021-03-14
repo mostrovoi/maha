@@ -7,6 +7,6 @@ class CheckoutAdapter(private val checkoutUseCase: CheckoutUseCase) {
     fun execute(ids: List<String>): PriceDto {
         val numberIds = ids.map { it.toInt() }
         val total = checkoutUseCase.execute(numberIds)
-        return PriceDto(price = total.toDouble() / 100)
+        return PriceDto(price =  total / 100)
     }
 }

@@ -16,7 +16,7 @@ internal class CheckoutAdapterTest {
         val checkoutAdapter = CheckoutAdapter(checkoutUseCase)
         val listIds = listOf("1", "2", "3", "4")
         val totalPrice = checkoutAdapter.execute(listIds)
-        totalPrice `should be equal to` PriceDto(price = 300.0)
+        totalPrice `should be equal to` PriceDto(price = 300)
     }
 
     @Test
@@ -26,11 +26,11 @@ internal class CheckoutAdapterTest {
         val listIds = emptyList<String>()
 
         val totalPrice = checkoutAdapter.execute(listIds)
-        totalPrice `should be equal to` PriceDto(price = 300.0)
+        totalPrice `should be equal to` PriceDto(price = 300)
     }
 
     @Test
-    fun `should throw exception well with wrong input values`() {
+    fun `should throw exception with wrong input values`() {
         val checkoutUseCase = DummyCheckoutUseCase()
         val checkoutAdapter = CheckoutAdapter(checkoutUseCase)
         val listIds = listOf("1", "a", "3", "4")

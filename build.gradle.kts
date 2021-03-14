@@ -4,6 +4,7 @@ val kotlin_version: String by project
 val kluent_version: String by project
 val kotlin_serialization: String by project
 val kodein_version: String by project
+val google_client_version: String by project
 
 plugins {
     application
@@ -33,7 +34,8 @@ dependencies {
     implementation("org.kodein.di:kodein-di-generic-jvm:$kodein_version")
     implementation("org.kodein.di:kodein-di-framework-ktor-server-jvm:$kodein_version")
     implementation ("io.ktor:ktor-gson:$ktor_version")
-    testImplementation("io.ktor:ktor-server-tests:$ktor_version")
+    testImplementation("com.google.http-client:google-http-client:$google_client_version")
+    testImplementation ("io.ktor:ktor-server-test-host:$ktor_version")
     testImplementation("org.amshove.kluent:kluent:$kluent_version")
 }
 
@@ -44,7 +46,7 @@ sourceSets["main"].resources.srcDirs("resources")
 sourceSets["test"].resources.srcDirs("testresources")
 
 tasks {
-    val java = "11"
+    val java = "1.8"
 
     compileKotlin {
         kotlinOptions { jvmTarget = java }

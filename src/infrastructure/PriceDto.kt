@@ -1,3 +1,3 @@
 package com.maha.infrastructure
 
-data class PriceDto (val price: Double)
+data class PriceDto (val price: Int)
