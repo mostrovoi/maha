@@ -8,15 +8,13 @@ class CheckoutUseCaseImpl(private val watchRepository: WatchRepository) : Checko
 
     override fun execute(listIds: List<Int>): Int {
         val idGrouped = IdGrouper.groupById(listIds)
-        var totalPrice = 0
-        for (watchId in idGrouped) {
+        return idGrouped.map { watchId ->
             val watch = watchRepository.findByOrFail(watchId.key)
             if (watch.discount == null) {
-                totalPrice += PriceCalculator.calculate(watch.price, watchId.value)
+                PriceCalculator.calculate(watch.price, watchId.value)
             } else {
-                totalPrice += PriceCalculator.calculate(watch.price, watch.discount, watchId.value)
+                PriceCalculator.calculate(watch.price, watch.discount, watchId.value)
             }
-        }
-        return totalPrice
+        }.sum()
     }
 }
