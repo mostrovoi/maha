@@ -1,6 +1,6 @@
 # Bank ecommerce 
 
-This application exposes a single endpoint to perform a checkout operation, very much in line with the checkout operation for an ecommerce.
+This application exposes a single endpoint to perform a checkout operation, very much in line with a checkout operation for an ecommerce.
 
 # How to run it
 
@@ -16,7 +16,7 @@ To build the application which starts the server type the following command:
 
 This will start the application which will be accessible at **http://localhost:8080/health**
 
-Health endpoint is a endpoint provide for smoke tests as well as to make sure that gradlew run started the application correctly.
+Health endpoint is an endpoint provided for smoke tests as well as to make sure that gradlew run started the application correctly.
 
 # Using the application
 
