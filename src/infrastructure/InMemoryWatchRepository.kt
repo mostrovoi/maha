@@ -13,20 +13,20 @@ class InMemoryWatchRepository : WatchRepository {
             Watch(
                 id = 1,
                 name = "Rolex",
-                price = 10000,
-                discount = Discount(total = 3, discountPrice = 20000)
+                price = 100,
+                discount = Discount(total = 3, discountPrice = 200)
             )
         )
         this.addWatch(
             Watch(
                 id = 2,
                 name = "Michael Kors",
-                price = 8000,
-                discount = Discount(total = 2, discountPrice = 12000)
+                price = 80,
+                discount = Discount(total = 2, discountPrice = 120)
             )
         )
-        this.addWatch(Watch(id = 3, name = "Swatch", price = 5000))
-        this.addWatch(Watch(id = 4, name = "Casio", price = 3000))
+        this.addWatch(Watch(id = 3, name = "Swatch", price = 50))
+        this.addWatch(Watch(id = 4, name = "Casio", price = 30))
 
     }
 
