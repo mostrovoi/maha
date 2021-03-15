@@ -33,6 +33,8 @@ This will return as expected:
 
 We don't make choices on what is the best price for the user. This means that, if possible, the discount will always be applied even though may mean that the final price is higher than without the discount.
 
+Currency is stored in their minor unit form. So to store 10, I save it as an integer in the database as 1000 and internally all operations are done in the minor unit form. 
+
 I have used hexagonal architecture to develop the application having as benefits to easily test the business logic and to defer technical choices. 
 
 Given that the application is just a simple endpoint I didn't want to start defining aggregates but this should be easy to refactor when we start adding new use cases.
