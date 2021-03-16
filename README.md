@@ -47,7 +47,7 @@ I have additionally added a smoke test that starts up the server and checks that
 
 There are quite a few corner cases covered though there are some that are not covered, and for production use should be. Namely, I have identified the following improvements:
 
-1.- Limit the total body payload sent by the post operation, maybe up to 100 items?
+1.- Limit the total body payload sent by the post operation, maybe up to 100 items?. This is specially important given the fact that we use integers for multiplications to avoid operation overflows.
 
 2.- Improve logging and error handling. If the operation fails only returns status code but there should come along an ErrorDto message containing information about what went wrong
 
@@ -59,7 +59,7 @@ There are quite a few corner cases covered though there are some that are not co
 
 6.- I could have provided more value objects for the watch object, e.g. for the price and for the id so that these values are already checked at creation time
 
-
+7.- I have intentionally ignored the Accept header as we currently only support json as return value. Future improvements would also take Accept header and its different values into account
 
 
 
